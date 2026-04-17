@@ -1,6 +1,6 @@
-# PillBot
+# PillTalks
 
-PillBot is a Python chat agent built for `pump.fun`-style live community support. It responds to common questions in chat, shares configured project links, surfaces contract info, and applies basic safety checks around risky or scammy prompts.
+PillTalks is a Python chat agent built for `pump.fun`-style live community support. It responds to common questions in chat, shares configured project links, surfaces contract info, and applies basic safety checks around risky or scammy prompts.
 
 The project already runs locally and includes a dedicated live transport module for pump.fun chat workflows.
 
@@ -14,9 +14,9 @@ The project already runs locally and includes a dedicated live transport module 
 
 ## Boundaries
 
-- PillBot should not impersonate a human.
-- PillBot should not spam rooms or evade platform rules.
-- PillBot does not provide financial advice.
+- PillTalks should not impersonate a human.
+- PillTalks should not spam rooms or evade platform rules.
+- PillTalks does not provide financial advice.
 - The included `pump.fun` live transport is built for real-time chat integration and deployment through your own bridge.
 
 ## Stack
@@ -28,7 +28,7 @@ The project already runs locally and includes a dedicated live transport module 
 ## Project Structure
 
 ```text
-pillbot/
+pilltalks/
   agent.py
   config.py
   main.py
@@ -40,7 +40,7 @@ pillbot/
 
 ```bash
 copy .env.example .env
-python -m pillbot.main --transport=stdin
+python -m pilltalks.main --transport=stdin
 ```
 
 Then edit `.env` with your real project values and test the bot in the terminal before enabling live transport settings.
@@ -65,14 +65,14 @@ Then edit `.env` with your real project values and test the bot in the terminal 
 
 ## Run Modes
 
-- `python -m pillbot.main --transport=stdin`
-- `python -m pillbot.main --transport=pumpfun-live`
+- `python -m pilltalks.main --transport=stdin`
+- `python -m pilltalks.main --transport=pumpfun-live`
 
 ## Live Integration
 
-The file `pillbot/transports.py` contains the live transport module for pump.fun chat handling.
+The file `pilltalks/transports.py` contains the live transport module for pump.fun chat handling.
 
-Once connected to your real bridge, PillBot can:
+Once connected to your real bridge, PillTalks can:
 
 - receive incoming live chat messages
 - decide whether a message needs a reply
@@ -84,7 +84,7 @@ Your bridge should:
 - connect to the live chat feed
 - normalize incoming events into the shared `ChatMessage` shape
 - send replies back through your approved send path
-- ignore PillBot's own messages
+- ignore PillTalks' own messages
 - respect platform rate limits and room rules
 
 ## Publish Checklist

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 
-from pillbot.types import AgentReply, ChatMessage
+from pilltalks.types import AgentReply, ChatMessage
 
 
 MAX_REPLY_LENGTH = 280
@@ -14,7 +14,7 @@ SAFETY_PATTERNS = [
 ]
 
 
-class PillBotAgent:
+class PillTalksAgent:
     def __init__(
         self,
         *,
@@ -85,7 +85,7 @@ class PillBotAgent:
         return any(
             token in lowered
             for token in (
-                "pillbot",
+                "pilltalks",
                 "help",
                 "what is this",
                 "contract",

@@ -57,11 +57,11 @@ def load_config(argv: list[str]) -> AppConfig:
     allowed_rooms = [room.strip() for room in (_get_env("ALLOWED_ROOMS") or "general").split(",") if room.strip()]
 
     return AppConfig(
-        bot_name=_get_env("BOT_NAME") or "PillBot",
+        bot_name=_get_env("BOT_NAME") or "PillTalks",
         bot_disclosure=_get_env("BOT_DISCLOSURE")
-        or "PillBot is an automated account for public pump.fun chat support. Not financial advice.",
+        or "PillTalks is an automated account for public pump.fun chat support. Not financial advice.",
         bot_system_prompt=_get_env("BOT_SYSTEM_PROMPT")
-        or "You are PillBot. You are a disclosed automated account. Be concise, useful, and never pretend to be human.",
+        or "You are PillTalks. You are a disclosed automated account. Be concise, useful, and never pretend to be human.",
         project_name=_get_env("PROJECT_NAME") or "Pill Project",
         project_website=_get_env("PROJECT_WEBSITE"),
         project_x=_get_env("PROJECT_X"),

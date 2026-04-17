@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from datetime import datetime, UTC
 from secrets import token_hex
 
-from pillbot.types import AgentReply, ChatMessage
+from pilltalks.types import AgentReply, ChatMessage
 
 
 class ChatTransport(ABC):
@@ -23,7 +23,7 @@ class StdinTransport(ChatTransport):
     name = "stdin"
 
     def connect(self, on_message: callable) -> None:
-        print("PillBot local simulation started. Use Ctrl+C to stop.")
+        print("PillTalks local simulation started. Use Ctrl+C to stop.")
         while True:
             try:
                 line = input("user> ")
@@ -42,7 +42,7 @@ class StdinTransport(ChatTransport):
             on_message(message)
 
     def send_message(self, reply: AgentReply) -> None:
-        print(f"{reply.room_id}> pillbot> {reply.text}")
+        print(f"{reply.room_id}> pilltalks> {reply.text}")
 
 
 class PumpfunLiveTransport(ChatTransport):

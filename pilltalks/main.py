@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import sys
 
-from pillbot.agent import PillBotAgent
-from pillbot.config import load_config
-from pillbot.transports import ChatTransport, PumpfunLiveTransport, StdinTransport
+from pilltalks.agent import PillTalksAgent
+from pilltalks.config import load_config
+from pilltalks.transports import ChatTransport, PumpfunLiveTransport, StdinTransport
 
 
 def main() -> None:
     config = load_config(sys.argv[1:])
-    agent = PillBotAgent(
+    agent = PillTalksAgent(
         bot_name=config.bot_name,
         bot_disclosure=config.bot_disclosure,
         bot_system_prompt=config.bot_system_prompt,
