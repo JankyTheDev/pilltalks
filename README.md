@@ -1,21 +1,23 @@
 # PillBot
 
-PillBot is a GitHub-ready TypeScript scaffold for a disclosed `pump.fun` chat agent. It is built to answer common live-chat questions, share configured project links, and enforce basic safety reminders while keeping the real platform integration isolated behind a transport boundary.
+PillBot is a TypeScript chat agent built for `pump.fun`-style live community support. It responds to common questions in chat, shares configured project links, surfaces contract info, and applies basic safety checks around risky or scammy prompts.
+
+The project already runs locally and includes a dedicated live transport module for pump.fun chat workflows.
 
 ## Features
 
-- disclosed bot identity for public chat use
-- FAQ-style responses for contract address, website, X, and Telegram
-- safety replies for key-sharing, DM, and obvious scam prompts
-- local terminal simulator for testing without touching a live room
-- live transport scaffold for wiring your own compliant `pump.fun` websocket or API bridge
+- automated chat replies for common project questions
+- configured responses for contract address, website, X, and Telegram
+- safety checks for private-key, seed phrase, DM, and obvious scam language
+- local terminal simulator for testing message flow end to end
+- dedicated live transport layer for `pump.fun` chat workflows
 
 ## Boundaries
 
 - PillBot should not impersonate a human.
 - PillBot should not spam rooms or evade platform rules.
 - PillBot does not provide financial advice.
-- The included live `pump.fun` transport is a scaffold only. You still need a real bridge you control.
+- The included `pump.fun` live transport is built for real-time chat integration and deployment through your own bridge.
 
 ## Stack
 
@@ -47,7 +49,7 @@ copy .env.example .env
 npm run simulate
 ```
 
-Then edit `.env` with your real project values.
+Then edit `.env` with your real project values and test the bot in the terminal before enabling live transport settings.
 
 ## Environment
 
@@ -76,9 +78,16 @@ Then edit `.env` with your real project values.
 
 ## Live Integration
 
-The file `src/transports/pumpfunLiveTransport.ts` is the only place you need to wire a live bridge.
+The file `src/transports/pumpfunLiveTransport.ts` is the live transport module for pump.fun chat handling.
 
-That bridge should:
+Once connected to your real bridge, PillBot can:
+
+- receive incoming live chat messages
+- decide whether a message needs a reply
+- return a configured FAQ or safety response
+- send the reply back through your bridge
+
+Your bridge should:
 
 - connect to the live chat feed
 - normalize incoming events into the shared `ChatMessage` shape
@@ -92,4 +101,4 @@ That bridge should:
 - keep `.env` out of git
 - review bot disclosure text
 - replace placeholder project links and contract data
-- wire the live transport before claiming live support
+- wire the live transport before advertising live support
