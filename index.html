@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PillTalks | Live Chat Agent for Pump.Fun Communities</title>
+    <meta
+      name="description"
+      content="PillTalks is a fast Python chat agent for pump.fun-style communities with live transport support, automated replies, and built-in safety checks."
+    >
+    <meta name="theme-color" content="#0d1117">
+    <meta property="og:title" content="PillTalks">
+    <meta
+      property="og:description"
+      content="Live chat agent for pump.fun-style communities with automated replies, safety checks, and a lightweight Python runtime."
+    >
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand-mark" aria-hidden="true">PT</div>
+        <div class="brand-copy">
+          <p class="eyebrow">PillTalks</p>
+          <p class="brand-subtitle">Live community support agent</p>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#flow">Flow</a>
+          <a href="#deploy">Deploy</a>
+        </nav>
+      </header>
+
+      <main id="content">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="section-tag">Python runtime. Lightweight frontend. Ready to ship.</p>
+            <h1>PillTalks keeps live chat fast, clear, and on-brand.</h1>
+            <p class="hero-text">
+              PillTalks is a performance-focused chat agent for pump.fun-style communities. It
+              handles common questions, shares project links, surfaces contract details, and flags
+              risky prompts without dragging your site down.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#deploy">Deploy PillTalks</a>
+              <a class="button button-secondary" href="#features">See what it does</a>
+            </div>
+            <ul class="hero-points" aria-label="Key product points">
+              <li>Python backend with a clean live transport layer</li>
+              <li>Fast static landing page with no framework overhead</li>
+              <li>Built for public community support, not hype spam</li>
+            </ul>
+          </div>
+
+          <aside class="hero-panel" aria-label="Product summary">
+            <div class="panel-window">
+              <p class="panel-label">Live reply preview</p>
+              <div class="chat-line chat-line-user">
+                <span class="chat-name">community</span>
+                <p>pilltalks what is this?</p>
+              </div>
+              <div class="chat-line chat-line-bot">
+                <span class="chat-name">pilltalks</span>
+                <p>
+                  PillTalks is an automated account for public pump.fun chat support. I can answer
+                  project questions, share links, and surface contract info.
+                </p>
+              </div>
+              <div class="stat-grid">
+                <div class="stat-card">
+                  <span class="stat-value">0 JS</span>
+                  <span class="stat-label">needed for core page rendering</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-value">&lt; 20KB</span>
+                  <span class="stat-label">targeted first-load page assets</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="feature-strip" aria-label="Highlights">
+          <article class="feature-chip">
+            <h2>Answer faster</h2>
+            <p>Handles repeated community questions without bloating your stack.</p>
+          </article>
+          <article class="feature-chip">
+            <h2>Stay safe</h2>
+            <p>Flags obvious scam and key-sharing prompts before they become problems.</p>
+          </article>
+          <article class="feature-chip">
+            <h2>Ship lighter</h2>
+            <p>Static marketing layer up front, Python agent logic underneath.</p>
+          </article>
+        </section>
+
+        <section id="features" class="content-section">
+          <div class="section-heading">
+            <p class="section-tag">Features</p>
+            <h2>What PillTalks handles out of the box</h2>
+          </div>
+          <div class="card-grid">
+            <article class="info-card">
+              <h3>Configured FAQ replies</h3>
+              <p>
+                Answer questions about contract address, website, X, Telegram, and launch details
+                from simple environment-driven configuration.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Safety response layer</h3>
+              <p>
+                Detects risky prompts around private keys, seed phrases, direct fund requests, and
+                obvious scam language.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Live transport boundary</h3>
+              <p>
+                Keeps your bridge logic separate from the bot logic so live chat integrations stay
+                maintainable.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Local simulation mode</h3>
+              <p>
+                Run the bot in the terminal and test message flow before wiring any live event
+                source.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="flow" class="content-section accent-section">
+          <div class="section-heading">
+            <p class="section-tag">Live Flow</p>
+            <h2>A simple path from message to reply</h2>
+          </div>
+          <ol class="flow-list">
+            <li>
+              <strong>Receive</strong>
+              <span>Your bridge captures incoming chat events.</span>
+            </li>
+            <li>
+              <strong>Normalize</strong>
+              <span>PillTalks maps them into a clean shared message shape.</span>
+            </li>
+            <li>
+              <strong>Decide</strong>
+              <span>The agent checks whether the message needs a public reply.</span>
+            </li>
+            <li>
+              <strong>Respond</strong>
+              <span>The selected transport sends the reply back through your live path.</span>
+            </li>
+          </ol>
+        </section>
+
+        <section id="deploy" class="content-section deploy-section">
+          <div class="section-heading">
+            <p class="section-tag">Deploy</p>
+            <h2>Built to be quick to launch and cheap to host</h2>
+          </div>
+          <div class="deploy-layout">
+            <div class="code-card">
+              <p class="code-label">Quick start</p>
+              <pre><code>copy .env.example .env
+python -m pilltalks.main --transport=stdin</code></pre>
+            </div>
+            <div class="deploy-copy">
+              <p>
+                This page is intentionally static and lightweight so your landing experience stays
+                fast. The bot runtime remains in Python, where the actual reply logic and live
+                transport code belong.
+              </p>
+              <p>
+                That split keeps the marketing surface clean while leaving the agent stack flexible
+                enough for live chat deployment.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>PillTalks</p>
+        <p>Fast frontend. Python agent. Live-community workflow.</p>
+      </footer>
+    </div>
+  </body>
+</html>
