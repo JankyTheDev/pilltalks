@@ -24,6 +24,13 @@ class AppConfig:
     pumpfun_bot_user_id: str | None
     pumpfun_poll_interval_seconds: float
     pumpfun_auth_header: str
+    pumpfun_auth_scheme: str | None
+    reply_cooldown_seconds: float
+    room_rate_limit_count: int
+    room_rate_limit_window_seconds: float
+    message_history_size: int
+    log_level: str
+    log_format: str
 
 
 def _load_dotenv() -> None:
@@ -78,4 +85,11 @@ def load_config(argv: list[str]) -> AppConfig:
         pumpfun_bot_user_id=_get_env("PUMPFUN_BOT_USER_ID"),
         pumpfun_poll_interval_seconds=float(_get_env("PUMPFUN_POLL_INTERVAL_SECONDS") or "2.0"),
         pumpfun_auth_header=_get_env("PUMPFUN_AUTH_HEADER") or "Authorization",
+        pumpfun_auth_scheme=_get_env("PUMPFUN_AUTH_SCHEME"),
+        reply_cooldown_seconds=float(_get_env("REPLY_COOLDOWN_SECONDS") or "8.0"),
+        room_rate_limit_count=int(_get_env("ROOM_RATE_LIMIT_COUNT") or "4"),
+        room_rate_limit_window_seconds=float(_get_env("ROOM_RATE_LIMIT_WINDOW_SECONDS") or "30.0"),
+        message_history_size=int(_get_env("MESSAGE_HISTORY_SIZE") or "6"),
+        log_level=(_get_env("LOG_LEVEL") or "INFO").upper(),
+        log_format=(_get_env("LOG_FORMAT") or "plain").lower(),
     )

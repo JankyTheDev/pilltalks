@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.1 - 2026-04-17
+
+- added configurable per-user cooldowns and per-room reply rate limiting
+- added recent message history context for short follow-up questions like `link?`
+- expanded moderation patterns for DM scams, wallet approval bait, and urgency tactics
+- added structured logging with plain-text or JSON output modes
+- added optional auth scheme support for bridges using headers like `Authorization: Bearer <token>`
+- documented the new environment settings and common bridge authentication setups
+
 ## 1.0.0 - 2026-04-17
 
 - created the initial PillTalks chat agent scaffold

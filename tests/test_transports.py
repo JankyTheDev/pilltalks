@@ -69,6 +69,26 @@ class PumpfunLiveTransportTests(unittest.TestCase):
         self.assertEqual(captured["auth"], "token")
         self.assertIn('"roomId": "general"', captured["body"])
 
+    def test_send_message_uses_auth_scheme_when_configured(self) -> None:
+        transport = PumpfunLiveTransport(
+            stream_url="https://bridge.example/messages",
+            send_url="https://bridge.example/send",
+            api_key="token",
+            poll_interval_seconds=2.0,
+            auth_header="Authorization",
+            auth_scheme="Bearer",
+        )
+        captured = {}
+
+        def fake_urlopen(req, timeout=0):
+            captured["auth"] = req.headers.get("Authorization")
+            return MockResponse({"ok": True})
+
+        with patch("pilltalks.transports.request.urlopen", side_effect=fake_urlopen):
+            transport.send_message(AgentReply(room_id="general", text="hello", reply_to_message_id="1"))
+
+        self.assertEqual(captured["auth"], "Bearer token")
+
     def test_fetch_messages_rejects_invalid_payload_shape(self) -> None:
         transport = PumpfunLiveTransport(
             stream_url="https://bridge.example/messages",

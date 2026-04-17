@@ -18,9 +18,12 @@ The project already runs locally and includes a dedicated live transport module 
 - automated chat replies for common project questions
 - configured responses for contract address, website, X, and Telegram
 - safety checks for private-key, seed phrase, DM, and obvious scam language
+- configurable cooldowns and room-level rate limiting for safer live operation
+- short follow-up handling powered by recent room message history
 - local terminal simulator for testing message flow end to end
 - dedicated live transport layer for `pump.fun` chat workflows
 - bridge-backed polling transport for live integration without framework lock-in
+- plain-text or JSON structured logging for chat events
 - unit tests for core reply and transport behavior
 - GitHub Actions CI for every push and pull request
 
@@ -81,6 +84,13 @@ Then edit `.env` with your real project values and test the bot in the terminal 
 - `PUMPFUN_BOT_USER_ID`
 - `PUMPFUN_POLL_INTERVAL_SECONDS`
 - `PUMPFUN_AUTH_HEADER`
+- `PUMPFUN_AUTH_SCHEME`
+- `REPLY_COOLDOWN_SECONDS`
+- `ROOM_RATE_LIMIT_COUNT`
+- `ROOM_RATE_LIMIT_WINDOW_SECONDS`
+- `MESSAGE_HISTORY_SIZE`
+- `LOG_LEVEL`
+- `LOG_FORMAT=plain|json`
 
 ## Run Modes
 
@@ -104,7 +114,7 @@ The included bridge contract now supports:
 
 - `GET PUMPFUN_STREAM_URL` returning either a JSON array of messages or `{ "messages": [...] }`
 - `POST PUMPFUN_SEND_URL` with `roomId`, `text`, and optional `replyToMessageId`
-- configurable auth header name and polling interval
+- configurable auth header name, optional auth scheme, and polling interval
 
 Your bridge should:
 
@@ -134,9 +144,10 @@ Current release focus:
 
 - stable Python runtime
 - documented bridge contract
+- safer live reply controls and smarter follow-up handling
 - test-covered core reply logic
 - example bridge for local development
-- fast static landing page for public project presentation
+- structured logging and fast static landing page for public project presentation
 
 ## Publish Checklist
 

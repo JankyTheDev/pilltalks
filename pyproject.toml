@@ -1,6 +1,6 @@
 [project]
 name = "pilltalks"
-version = "1.0.0"
+version = "1.0.1"
 description = "PillTalks is a Python live chat agent for pump.fun-style workflows with automated replies, safety checks, local simulation, and a configurable live transport layer."
 readme = "README.md"
 requires-python = ">=3.11"

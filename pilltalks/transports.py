@@ -3,6 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from datetime import datetime, UTC
 import json
+import logging
 from secrets import token_hex
 import time
 from typing import Any
@@ -60,12 +61,16 @@ class PumpfunLiveTransport(ChatTransport):
         api_key: str | None,
         poll_interval_seconds: float,
         auth_header: str,
+        auth_scheme: str | None = None,
+        logger: logging.Logger | None = None,
     ) -> None:
         self.stream_url = stream_url
         self.send_url = send_url
         self.api_key = api_key
         self.poll_interval_seconds = max(0.25, poll_interval_seconds)
         self.auth_header = auth_header
+        self.auth_scheme = auth_scheme
+        self.logger = logger or logging.getLogger("pilltalks")
         self.seen_message_ids: set[str] = set()
 
     def connect(self, on_message: callable) -> None:
@@ -99,7 +104,7 @@ class PumpfunLiveTransport(ChatTransport):
 
         headers = {
             "Content-Type": "application/json",
-            self.auth_header: self.api_key,
+            self.auth_header: self._auth_header_value(),
         }
         http_request = request.Request(
             self.send_url,
@@ -115,7 +120,7 @@ class PumpfunLiveTransport(ChatTransport):
     def _fetch_messages(self) -> list[ChatMessage]:
         headers = {}
         if self.api_key:
-            headers[self.auth_header] = self.api_key
+            headers[self.auth_header] = self._auth_header_value()
 
         http_request = request.Request(self.stream_url, headers=headers, method="GET")
         with request.urlopen(http_request, timeout=15) as response:
@@ -141,3 +146,8 @@ class PumpfunLiveTransport(ChatTransport):
             text=str(item["text"]),
             timestamp=str(item.get("timestamp") or datetime.now(UTC).isoformat()),
         )
+
+    def _auth_header_value(self) -> str:
+        if self.auth_scheme:
+            return f"{self.auth_scheme} {self.api_key}"
+        return str(self.api_key)
