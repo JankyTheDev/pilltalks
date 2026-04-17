@@ -37,6 +37,11 @@ pilltalks/
   main.py
   transports.py
   types.py
+examples/
+  bridge_server.py
+tests/
+  test_agent.py
+  test_transports.py
 ```
 
 ## Quick Start
@@ -73,6 +78,7 @@ Then edit `.env` with your real project values and test the bot in the terminal 
 - `python -m pilltalks.main --transport=stdin`
 - `python -m pilltalks.main --transport=pumpfun-live`
 - `python -m unittest discover -s tests -v`
+- `python examples/bridge_server.py`
 
 ## Live Integration
 
@@ -104,7 +110,10 @@ Your bridge should:
 - MIT licensed
 - explicit `SECURITY.md`
 - explicit `CONTRIBUTING.md`
+- explicit `DEPLOYMENT.md`
+- explicit `CHANGELOG.md`
 - CI workflow in `.github/workflows/ci.yml`
+- issue templates in `.github/ISSUE_TEMPLATE/`
 - unit tests in `tests/`
 - no hardcoded secrets; environment-driven configuration only
 

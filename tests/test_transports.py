@@ -69,6 +69,19 @@ class PumpfunLiveTransportTests(unittest.TestCase):
         self.assertEqual(captured["auth"], "token")
         self.assertIn('"roomId": "general"', captured["body"])
 
+    def test_fetch_messages_rejects_invalid_payload_shape(self) -> None:
+        transport = PumpfunLiveTransport(
+            stream_url="https://bridge.example/messages",
+            send_url="https://bridge.example/send",
+            api_key="token",
+            poll_interval_seconds=2.0,
+            auth_header="Authorization",
+        )
+
+        with patch("pilltalks.transports.request.urlopen", return_value=MockResponse({"messages": {}})):
+            with self.assertRaises(RuntimeError):
+                transport._fetch_messages()
+
 
 if __name__ == "__main__":
     unittest.main()
