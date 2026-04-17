@@ -1,0 +1,29 @@
+{
+  "name": "pillbot-pumpfun-live",
+  "version": "1.0.0",
+  "description": "PillBot is a disclosed pump.fun live chat agent scaffold with local simulation, FAQ responses, and a compliant live transport boundary.",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "simulate": "tsx src/index.ts --transport=stdin",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "pumpfun",
+    "chatbot",
+    "typescript",
+    "websocket"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2"
+  }
+}
