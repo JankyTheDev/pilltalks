@@ -1,6 +1,6 @@
 # PillBot
 
-PillBot is a TypeScript chat agent built for `pump.fun`-style live community support. It responds to common questions in chat, shares configured project links, surfaces contract info, and applies basic safety checks around risky or scammy prompts.
+PillBot is a Python chat agent built for `pump.fun`-style live community support. It responds to common questions in chat, shares configured project links, surfaces contract info, and applies basic safety checks around risky or scammy prompts.
 
 The project already runs locally and includes a dedicated live transport module for pump.fun chat workflows.
 
@@ -21,32 +21,26 @@ The project already runs locally and includes a dedicated live transport module 
 
 ## Stack
 
-- TypeScript
-- Node.js
-- `tsx` for local execution
-- `dotenv` for environment-based config
+- Python
+- standard library runtime
+- local `.env` loading without third-party config packages
 
 ## Project Structure
 
 ```text
-src/
-  agent/
-    pillBotAgent.ts
-    types.ts
-  transports/
-    chatTransport.ts
-    pumpfunLiveTransport.ts
-    stdinTransport.ts
-  config.ts
-  index.ts
+pillbot/
+  agent.py
+  config.py
+  main.py
+  transports.py
+  types.py
 ```
 
 ## Quick Start
 
 ```bash
-npm install
 copy .env.example .env
-npm run simulate
+python -m pillbot.main --transport=stdin
 ```
 
 Then edit `.env` with your real project values and test the bot in the terminal before enabling live transport settings.
@@ -69,16 +63,14 @@ Then edit `.env` with your real project values and test the bot in the terminal 
 - `PUMPFUN_API_KEY`
 - `PUMPFUN_BOT_USER_ID`
 
-## Scripts
+## Run Modes
 
-- `npm run dev`
-- `npm run simulate`
-- `npm run typecheck`
-- `npm run build`
+- `python -m pillbot.main --transport=stdin`
+- `python -m pillbot.main --transport=pumpfun-live`
 
 ## Live Integration
 
-The file `src/transports/pumpfunLiveTransport.ts` is the live transport module for pump.fun chat handling.
+The file `pillbot/transports.py` contains the live transport module for pump.fun chat handling.
 
 Once connected to your real bridge, PillBot can:
 

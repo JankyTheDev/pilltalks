@@ -1,0 +1,18 @@
+[project]
+name = "pillbot-live"
+version = "1.0.0"
+description = "PillBot is a Python live chat agent for pump.fun-style workflows with automated replies, safety checks, local simulation, and a configurable live transport layer."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "" }]
+
+[project.scripts]
+pillbot = "pillbot.main:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["pillbot*"]
