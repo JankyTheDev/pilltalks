@@ -22,6 +22,8 @@ class AppConfig:
     pumpfun_send_url: str | None
     pumpfun_api_key: str | None
     pumpfun_bot_user_id: str | None
+    pumpfun_poll_interval_seconds: float
+    pumpfun_auth_header: str
 
 
 def _load_dotenv() -> None:
@@ -74,4 +76,6 @@ def load_config(argv: list[str]) -> AppConfig:
         pumpfun_send_url=_get_env("PUMPFUN_SEND_URL"),
         pumpfun_api_key=_get_env("PUMPFUN_API_KEY"),
         pumpfun_bot_user_id=_get_env("PUMPFUN_BOT_USER_ID"),
+        pumpfun_poll_interval_seconds=float(_get_env("PUMPFUN_POLL_INTERVAL_SECONDS") or "2.0"),
+        pumpfun_auth_header=_get_env("PUMPFUN_AUTH_HEADER") or "Authorization",
     )

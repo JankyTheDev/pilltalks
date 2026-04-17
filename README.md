@@ -11,6 +11,9 @@ The project already runs locally and includes a dedicated live transport module 
 - safety checks for private-key, seed phrase, DM, and obvious scam language
 - local terminal simulator for testing message flow end to end
 - dedicated live transport layer for `pump.fun` chat workflows
+- bridge-backed polling transport for live integration without framework lock-in
+- unit tests for core reply and transport behavior
+- GitHub Actions CI for every push and pull request
 
 ## Boundaries
 
@@ -62,11 +65,14 @@ Then edit `.env` with your real project values and test the bot in the terminal 
 - `PUMPFUN_SEND_URL`
 - `PUMPFUN_API_KEY`
 - `PUMPFUN_BOT_USER_ID`
+- `PUMPFUN_POLL_INTERVAL_SECONDS`
+- `PUMPFUN_AUTH_HEADER`
 
 ## Run Modes
 
 - `python -m pilltalks.main --transport=stdin`
 - `python -m pilltalks.main --transport=pumpfun-live`
+- `python -m unittest discover -s tests -v`
 
 ## Live Integration
 
@@ -79,6 +85,12 @@ Once connected to your real bridge, PillTalks can:
 - return a configured FAQ or safety response
 - send the reply back through your bridge
 
+The included bridge contract now supports:
+
+- `GET PUMPFUN_STREAM_URL` returning either a JSON array of messages or `{ "messages": [...] }`
+- `POST PUMPFUN_SEND_URL` with `roomId`, `text`, and optional `replyToMessageId`
+- configurable auth header name and polling interval
+
 Your bridge should:
 
 - connect to the live chat feed
@@ -86,6 +98,15 @@ Your bridge should:
 - send replies back through your approved send path
 - ignore PillTalks' own messages
 - respect platform rate limits and room rules
+
+## Repo Trust Signals
+
+- MIT licensed
+- explicit `SECURITY.md`
+- explicit `CONTRIBUTING.md`
+- CI workflow in `.github/workflows/ci.yml`
+- unit tests in `tests/`
+- no hardcoded secrets; environment-driven configuration only
 
 ## Publish Checklist
 

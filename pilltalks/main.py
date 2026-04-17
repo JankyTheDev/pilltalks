@@ -29,6 +29,8 @@ def main() -> None:
             stream_url=config.pumpfun_stream_url,
             send_url=config.pumpfun_send_url,
             api_key=config.pumpfun_api_key,
+            poll_interval_seconds=config.pumpfun_poll_interval_seconds,
+            auth_header=config.pumpfun_auth_header,
         )
     else:
         transport = StdinTransport()

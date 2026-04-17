@@ -6,6 +6,20 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "" }]
+keywords = ["pumpfun", "chat-agent", "python", "safety", "bridge"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Communications :: Chat",
+  "Topic :: Security"
+]
+
+[project.urls]
+Homepage = "https://github.com/JankyTheDev/pilltalks"
+Repository = "https://github.com/JankyTheDev/pilltalks"
+Issues = "https://github.com/JankyTheDev/pilltalks/issues"
+Security = "https://github.com/JankyTheDev/pilltalks/security"
 
 [project.scripts]
 pilltalks = "pilltalks.main:main"
