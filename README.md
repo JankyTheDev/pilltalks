@@ -4,6 +4,15 @@ PillTalks is a Python chat agent built for `pump.fun`-style live community suppo
 
 The project already runs locally and includes a dedicated live transport module for pump.fun chat workflows.
 
+## At a Glance
+
+- [Deployment guide](DEPLOYMENT.md)
+- [Demo walkthrough](docs/demo.md)
+- [Roadmap](ROADMAP.md)
+- [Changelog](CHANGELOG.md)
+- [Security policy](SECURITY.md)
+- [Contributing guide](CONTRIBUTING.md)
+
 ## Features
 
 - automated chat replies for common project questions
@@ -111,11 +120,23 @@ Your bridge should:
 - explicit `SECURITY.md`
 - explicit `CONTRIBUTING.md`
 - explicit `DEPLOYMENT.md`
+- explicit `ROADMAP.md`
+- explicit `docs/demo.md`
 - explicit `CHANGELOG.md`
 - CI workflow in `.github/workflows/ci.yml`
 - issue templates in `.github/ISSUE_TEMPLATE/`
 - unit tests in `tests/`
 - no hardcoded secrets; environment-driven configuration only
+
+## Release Notes
+
+Current release focus:
+
+- stable Python runtime
+- documented bridge contract
+- test-covered core reply logic
+- example bridge for local development
+- fast static landing page for public project presentation
 
 ## Publish Checklist
 
