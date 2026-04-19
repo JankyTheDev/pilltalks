@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2 - 2026-04-18
+
+- bumped package version to 1.0.2
+- refreshed release metadata for the next patch release
+
 ## 1.0.1 - 2026-04-17
 
 - added configurable per-user cooldowns and per-room reply rate limiting
