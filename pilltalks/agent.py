@@ -72,6 +72,7 @@ class PillTalksAgent:
         self.project_telegram = project_telegram
         self.contract_address = contract_address
         self.allowed_rooms = set(allowed_rooms)
+        self.allow_all_rooms = "*" in self.allowed_rooms
         self.ai_mode = ai_mode
         self.bot_user_id = bot_user_id
         self.reply_cooldown_seconds = max(0.0, reply_cooldown_seconds)
@@ -91,7 +92,7 @@ class PillTalksAgent:
 
     def handle_message(self, message: ChatMessage) -> AgentReply | None:
         now = self.clock()
-        if message.room_id not in self.allowed_rooms:
+        if not self.allow_all_rooms and message.room_id not in self.allowed_rooms:
             return None
         if self.bot_user_id and message.user_id == self.bot_user_id:
             return None

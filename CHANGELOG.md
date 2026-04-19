@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 - 2026-04-18
+
+- added `ALLOWED_ROOMS=*` support to allow replies in any room without listing each room id
+- added tests covering wildcard room configuration and reply behavior
+
 ## 1.0.2 - 2026-04-18
 
 - bumped package version to 1.0.2

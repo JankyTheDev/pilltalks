@@ -70,6 +70,25 @@ class PillTalksAgentTests(unittest.TestCase):
         )
         self.assertIsNone(reply)
 
+    def test_allowed_rooms_wildcard_accepts_any_room(self) -> None:
+        agent = build_agent()
+        agent.allowed_rooms = {"*"}
+        agent.allow_all_rooms = True
+
+        reply = agent.handle_message(
+            ChatMessage(
+                id="wild-1",
+                room_id="random-room",
+                user_id="user-3",
+                username="cara",
+                text="contract?",
+                timestamp="2026-04-17T00:00:00Z",
+            )
+        )
+
+        self.assertIsNotNone(reply)
+        self.assertIn("ABC123", reply.text)
+
     def test_follow_up_uses_recent_topic_history(self) -> None:
         clock_values = iter((100.0, 110.0, 120.0, 130.0))
         agent = build_agent()

@@ -46,6 +46,12 @@ class ConfigTests(unittest.TestCase):
         self.assertEqual(config.log_level, "DEBUG")
         self.assertEqual(config.log_format, "json")
 
+    def test_allowed_rooms_wildcard_is_loaded(self) -> None:
+        with patch.dict(os.environ, {"ALLOWED_ROOMS": "*"}, clear=True):
+            config = load_config([])
+
+        self.assertEqual(config.allowed_rooms, ["*"])
+
 
 if __name__ == "__main__":
     unittest.main()
